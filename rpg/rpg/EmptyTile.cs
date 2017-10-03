@@ -10,7 +10,7 @@ namespace rpg
     public class EmptyTile: Tile
     {
         static public List<bool> field = new List<bool>();
-        static public int count = 40;
+        static public int count = 80;
 
         static public void SetField(int xmax, int ymax)
         {
