@@ -25,22 +25,10 @@ namespace rpg
         {
             InitializeComponent();
             var foxDraw = new FoxDraw(canvas);
-            var list = new List<bool>();
-            for (int i = 0; i < 25; i++)
-            {
-                list.Add(false);
-            }
-            list[1] = true;
-            list[6] = true;
-            list[8] = true;
-            list[9] = true;
-            list[15] = true;
-            list[16] = true;
-            list[18] = true;
-            list[23] = true;
 
-            EmptyTile.DrawTiles(foxDraw, 5, 5);
-            NotEmptyTile.DrawWalls(foxDraw, 5, 5, list);
+            NotEmptyTile.DrawWalls(foxDraw, 10, 11);
+            EmptyTile.SetField(10, 11);
+            List<bool> field = EmptyTile.GenerateRoute(foxDraw, 0, 0, 10, 11);
         }
     }
 }

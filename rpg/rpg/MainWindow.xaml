@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:rpg"
         mc:Ignorable="d"
-        Title="MainWindow" Height="289" Width="266">
+        Title="MainWindow" Height="589" Width="516">
     <Grid>
-        <Canvas Name="canvas" Width="250" Height="250"/>
+        <Canvas Name="canvas" Width="500" Height="550"/>
     </Grid>
 </Window>
