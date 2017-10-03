@@ -21,7 +21,8 @@ namespace rpg
     /// </summary>
     public partial class MainWindow : Window
     {
-        Hero hero;
+        List<bool> field;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,31 +30,45 @@ namespace rpg
 
             NotEmptyTile.DrawWalls(foxDraw, 10, 11);
             EmptyTile.SetField(10, 11);
-            List<bool> field = EmptyTile.GenerateRoute(foxDraw, 0, 0, 10, 11);
+            field = EmptyTile.GenerateRoute(foxDraw, 0, 0, 10, 11);
 
-            hero = new Hero(field, 10, foxDraw);
+            Hero.SetHeroStart(foxDraw, field, 10);
+            Hero.DrawHero("./assets/hero-down.gif");
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
             {
-                hero.MoveHeroLeft();
+                Hero.DrawHero("./assets/hero-left.gif");
+                if (Hero.x > 0 && field[Hero.y * 10 + Hero.x - 1])
+                {
+                    Hero.Move("./assets/hero-left.gif", -1, 0);
+                }
             }
-
             if (e.Key == Key.Right)
             {
-                //Hero.HeroMove(hero.x, hero.y);
+                Hero.DrawHero("./assets/hero-right.gif");
+                if (Hero.x < 9 && field[Hero.y * 10 + Hero.x + 1])
+                {
+                    Hero.Move("./assets/hero-right.gif", 1, 0);
+                }
             }
-
             if (e.Key == Key.Up)
             {
-                //Hero.HeroMove(hero.x, hero.y);
+                Hero.DrawHero("./assets/hero-up.gif");
+                if (Hero.y > 0 && field[(Hero.y - 1) * 10 + Hero.x])
+                {
+                    Hero.Move("./assets/hero-up.gif", 0, -1);
+                }
             }
-
             if (e.Key == Key.Down)
             {
-                //Hero.HeroMove(hero.x, hero.y);
+                Hero.DrawHero("./assets/hero-down.gif");
+                if (Hero.y < 10 && field[(Hero.y + 1) * 10 + Hero.x])
+                {
+                    Hero.Move("./assets/hero-up.gif", 0, 1);
+                }
             }
         }
     }

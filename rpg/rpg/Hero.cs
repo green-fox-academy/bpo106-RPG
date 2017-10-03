@@ -5,29 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GreenFox;
+using System.Windows.Controls;
 
 namespace rpg
 {
     public class Hero : Character
     {
-        FoxDraw foxDraw;
-        public Hero(List<bool> field, int xmax, FoxDraw foxDraw) : base()
+        public static int x;
+        public static int y;
+        public static FoxDraw foxDraw;
+        public static Random random = new Random();
+        public static bool isOnRoute = false;
+
+        public static void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
-            this.foxDraw = foxDraw;
-            start = random.Next(0, field.Count);
-            while (!field[start])
+            Hero.foxDraw = foxDraw;
+            while (!isOnRoute)
             {
-                start = random.Next(0, field.Count);
+                int element = random.Next(0, list.Count);
+                isOnRoute = list[element];
+                x = element % xmax;
+                y = element / xmax;
             }
-            x = start % xmax;
-            y = start / xmax;
-            foxDraw.AddImage("./assets/hero-down.gif", x * 50, y * 50);
         }
 
-        public void MoveHeroLeft()
+        public static void DrawHero(string filename)
+        {
+            foxDraw.AddImage(filename, x * 50, y * 50);
+        }
+
+        public static void Move(string filename, int plusx, int plusy)
         {
             foxDraw.AddImage("./assets/floor.gif", x * 50, y * 50);
-            foxDraw.AddImage("./assets/hero-left.gif", (x - 1) * 50, y * 50);
+            x += plusx;
+            y += plusy;
+            DrawHero(filename);
         }
     }
 }
