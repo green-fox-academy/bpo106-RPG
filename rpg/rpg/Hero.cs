@@ -11,12 +11,6 @@ namespace rpg
 {
     public class Hero : Character
     {
-        public static int x;
-        public static int y;
-        public static FoxDraw foxDraw;
-        public static Random random = new Random();
-        public static bool isOnRoute = false;
-
         public static void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             Hero.foxDraw = foxDraw;

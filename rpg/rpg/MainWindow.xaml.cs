@@ -40,6 +40,7 @@ namespace rpg
         {
             if (e.Key == Key.Left)
             {
+                Hero.DrawHero("./assets/floor.gif");
                 Hero.DrawHero("./assets/hero-left.gif");
                 if (Hero.x > 0 && field[Hero.y * 10 + Hero.x - 1])
                 {
@@ -48,6 +49,7 @@ namespace rpg
             }
             if (e.Key == Key.Right)
             {
+                Hero.DrawHero("./assets/floor.gif");
                 Hero.DrawHero("./assets/hero-right.gif");
                 if (Hero.x < 9 && field[Hero.y * 10 + Hero.x + 1])
                 {
@@ -56,6 +58,7 @@ namespace rpg
             }
             if (e.Key == Key.Up)
             {
+                Hero.DrawHero("./assets/floor.gif");
                 Hero.DrawHero("./assets/hero-up.gif");
                 if (Hero.y > 0 && field[(Hero.y - 1) * 10 + Hero.x])
                 {
@@ -64,10 +67,11 @@ namespace rpg
             }
             if (e.Key == Key.Down)
             {
+                Hero.DrawHero("./assets/floor.gif");
                 Hero.DrawHero("./assets/hero-down.gif");
                 if (Hero.y < 10 && field[(Hero.y + 1) * 10 + Hero.x])
                 {
-                    Hero.Move("./assets/hero-up.gif", 0, 1);
+                    Hero.Move("./assets/hero-down.gif", 0, 1);
                 }
             }
         }
