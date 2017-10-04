@@ -10,8 +10,9 @@ namespace rpg
     public class Character : GameObject
     {
         protected static Random random = new Random();
-        protected static bool isOnRoute = false;
+        protected static bool isOnRoute;
         protected static FoxDraw foxDraw;
+        protected static int element;
         //protected int hp;
         //protected int dp;
         //protected int sp;

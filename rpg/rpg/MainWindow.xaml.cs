@@ -32,6 +32,15 @@ namespace rpg
             EmptyTile.SetField(10, 11);
             field = EmptyTile.GenerateRoute(foxDraw, 10);
 
+            Monster.SetMonsterStart(foxDraw, field, 10);
+            Monster.DrawMonster("./assets/boss.gif");
+
+            for (int i = 0; i < 3; i++)
+            {
+                Monster.SetMonsterStart(foxDraw, field, 10);
+                Monster.DrawMonster("./assets/skeleton.gif");
+            }
+
             Hero.SetHeroStart(foxDraw, field, 10);
             Hero.DrawHero("./assets/hero-down.gif");
         }

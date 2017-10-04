@@ -13,10 +13,11 @@ namespace rpg
     {
         public static void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
+            isOnRoute = false;
             Hero.foxDraw = foxDraw;
             while (!isOnRoute)
             {
-                int element = random.Next(0, list.Count);
+                element = random.Next(0, list.Count);
                 isOnRoute = list[element];
                 x = element % xmax;
                 y = element / xmax;
