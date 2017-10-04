@@ -30,7 +30,7 @@ namespace rpg
 
             NotEmptyTile.DrawWalls(foxDraw, 10, 11);
             EmptyTile.SetField(10, 11);
-            field = EmptyTile.GenerateRoute(foxDraw, 0, 0, 10, 11);
+            field = EmptyTile.GenerateRoute(foxDraw, 10);
 
             Hero.SetHeroStart(foxDraw, field, 10);
             Hero.DrawHero("./assets/hero-down.gif");
