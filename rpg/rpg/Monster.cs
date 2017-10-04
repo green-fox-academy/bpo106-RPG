@@ -9,9 +9,9 @@ namespace rpg
 {
     public class Monster : Character
     {
-        private int lvl = 1;
+        private static int lvl = 1;
 
-        public Monster()
+        public static void SetPoints()
         {
             d6 = random.Next(1, 7);
             hp = 2 * lvl * d6;

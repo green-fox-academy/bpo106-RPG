@@ -39,17 +39,36 @@ namespace rpg
 
             for (int i = 0; i < 3; i++)
             {
+                Monster.SetPoints();
                 Monster.SetMonsterStart(foxDraw, field, 10);
                 opponentList.Add(Monster.element);
                 Monster.DrawMonster("./assets/skeleton.gif");
             }
 
+            Hero.SetPoints();
             Hero.SetHeroStart(foxDraw, field, 10);
             Hero.DrawHero("./assets/hero-down.gif");
+
+            string info = Hero.DataToString();
+            Text(510, 0, info, Colors.Black);
+        }
+
+        private void Text(double x, double y, string text, Color color)
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = text;
+            textBlock.Foreground = new SolidColorBrush(color);
+            Canvas.SetLeft(textBlock, x);
+            Canvas.SetTop(textBlock, y);
+            canvas.Children.Add(textBlock);
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Enter)
+            {
+                Console.WriteLine("Enter");
+            }
             if (e.Key == Key.Left)
             {
                 Hero.DrawHero("./assets/floor.gif");
