@@ -33,9 +33,13 @@ namespace rpg
             EmptyTile.SetField(10, 11);
             field = EmptyTile.GenerateRoute(foxDraw, 10);
 
+            Monster.SetPoints();
             Monster.SetMonsterStart(foxDraw, field, 10);
             opponentList.Add(Monster.element);
             Monster.DrawMonster("./assets/boss.gif");
+
+            string infoBoss = Monster.BossDataToString();
+            Text(510, 100, infoBoss, Colors.Black);
 
             for (int i = 0; i < 3; i++)
             {
@@ -43,14 +47,17 @@ namespace rpg
                 Monster.SetMonsterStart(foxDraw, field, 10);
                 opponentList.Add(Monster.element);
                 Monster.DrawMonster("./assets/skeleton.gif");
+
+                string infoMonster = Monster.DataToString();
+                Text(510, (i + 2) * 100, infoMonster, Colors.Black);
             }
 
             Hero.SetPoints();
             Hero.SetHeroStart(foxDraw, field, 10);
             Hero.DrawHero("./assets/hero-down.gif");
 
-            string info = Hero.DataToString();
-            Text(510, 0, info, Colors.Black);
+            string infoHero = Hero.DataToString();
+            Text(510, 0, infoHero, Colors.Black);
         }
 
         private void Text(double x, double y, string text, Color color)
