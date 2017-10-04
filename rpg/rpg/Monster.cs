@@ -9,6 +9,16 @@ namespace rpg
 {
     public class Monster : Character
     {
+        private int lvl = 1;
+
+        public Monster()
+        {
+            d6 = random.Next(1, 7);
+            hp = 2 * lvl * d6;
+            dp = lvl / 2 * d6;
+            sp = lvl * d6;
+        }
+
         public static void SetMonsterStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             Monster.foxDraw = foxDraw;

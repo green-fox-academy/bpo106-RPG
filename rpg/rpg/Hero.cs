@@ -11,6 +11,14 @@ namespace rpg
 {
     public class Hero : Character
     {
+        public Hero()
+        {
+            d6 = random.Next(1, 7);
+            hp = 3 * d6 + 20;
+            dp = 2 * d6;
+            sp = d6 + 5;
+        }
+
         public static void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             isOnRoute = false;

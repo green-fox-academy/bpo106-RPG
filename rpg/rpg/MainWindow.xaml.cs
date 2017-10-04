@@ -22,6 +22,7 @@ namespace rpg
     public partial class MainWindow : Window
     {
         List<bool> field;
+        List<int> opponentList = new List<int>();
 
         public MainWindow()
         {
@@ -33,11 +34,13 @@ namespace rpg
             field = EmptyTile.GenerateRoute(foxDraw, 10);
 
             Monster.SetMonsterStart(foxDraw, field, 10);
+            opponentList.Add(Monster.element);
             Monster.DrawMonster("./assets/boss.gif");
 
             for (int i = 0; i < 3; i++)
             {
                 Monster.SetMonsterStart(foxDraw, field, 10);
+                opponentList.Add(Monster.element);
                 Monster.DrawMonster("./assets/skeleton.gif");
             }
 

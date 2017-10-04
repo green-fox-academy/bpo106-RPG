@@ -12,11 +12,11 @@ namespace rpg
         protected static Random random = new Random();
         protected static bool isOnRoute;
         protected static FoxDraw foxDraw;
-        protected static int element;
-        //protected int hp;
-        //protected int dp;
-        //protected int sp;
-        //protected int d6;
+        public static int element;
+        protected int hp;
+        protected int dp;
+        protected int sp;
+        protected int d6;
         public static int x;
         public static int y;
     }
