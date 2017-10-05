@@ -13,11 +13,12 @@ namespace rpg
         protected static bool isOnRoute;
         protected static FoxDraw foxDraw;
         public static int element;
-        protected static int hp;
-        protected static int dp;
-        protected static int sp;
+        public static int lvl;
+        public static int hp;
+        public static int dp;
+        public static int sp;
         protected static int d6;
-        public static int x;
-        public static int y;
+        public int x;
+        public int y;
     }
 }

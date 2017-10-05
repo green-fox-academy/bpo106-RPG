@@ -11,7 +11,7 @@ namespace rpg
 {
     public class Hero : Character
     {
-        public static void SetPoints()
+        public void SetPoints()
         {
             d6 = random.Next(1, 7);
             hp = 3 * d6 + 20;
@@ -25,7 +25,7 @@ namespace rpg
             return str;
         }
 
-        public static void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
+        public void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             isOnRoute = false;
             Hero.foxDraw = foxDraw;
@@ -38,12 +38,12 @@ namespace rpg
             }
         }
 
-        public static void DrawHero(string filename)
+        public void DrawHero(string filename)
         {
             foxDraw.AddImage(filename, x * 50, y * 50);
         }
 
-        public static void Move(string filename, int plusx, int plusy)
+        public void Move(string filename, int plusx, int plusy)
         {
             foxDraw.AddImage("./assets/floor.gif", x * 50, y * 50);
             x += plusx;

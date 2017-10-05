@@ -23,6 +23,10 @@ namespace rpg
     {
         List<bool> field;
         List<int> opponentList = new List<int>();
+        Hero hero = new Hero();
+        Monster boss = new Monster();
+        List<Monster> skeletons = new List<Monster>();
+
 
         public MainWindow()
         {
@@ -33,31 +37,31 @@ namespace rpg
             EmptyTile.SetField(10, 11);
             field = EmptyTile.GenerateRoute(foxDraw, 10);
 
-            Monster.SetPoints();
-            Monster.SetMonsterStart(foxDraw, field, 10);
-            opponentList.Add(Monster.element);
-            Monster.DrawMonster("./assets/boss.gif");
+            boss.SetPoints();
+            boss.SetMonsterStart(foxDraw, field, 10);
+            opponentList.Add(Character.element);
+            boss.DrawMonster("./assets/boss.gif");
 
-            string infoBoss = Monster.BossDataToString();
-            Text(510, 100, infoBoss, Colors.Black);
+            //Stats.StatText(510, 100, Colors.Black, boss);
 
             for (int i = 0; i < 3; i++)
             {
-                Monster.SetPoints();
-                Monster.SetMonsterStart(foxDraw, field, 10);
-                opponentList.Add(Monster.element);
-                Monster.DrawMonster("./assets/skeleton.gif");
-
-                string infoMonster = Monster.DataToString();
-                Text(510, (i + 2) * 100, infoMonster, Colors.Black);
+                skeletons.Add(new Monster());
             }
 
-            Hero.SetPoints();
-            Hero.SetHeroStart(foxDraw, field, 10);
-            Hero.DrawHero("./assets/hero-down.gif");
+            for (int i = 0; i < 3; i++)
+            {
+                skeletons[i].SetPoints();
+                skeletons[i].SetMonsterStart(foxDraw, field, 10);
+                opponentList.Add(Character.element);
+                skeletons[i].DrawMonster("./assets/skeleton.gif");
+            }
 
-            string infoHero = Hero.DataToString();
-            Text(510, 0, infoHero, Colors.Black);
+            hero.SetPoints();
+            hero.SetHeroStart(foxDraw, field, 10);
+            hero.DrawHero("./assets/hero-down.gif");
+
+            //Stats.StatText(510, 0, Colors.Black, hero);
         }
 
         private void Text(double x, double y, string text, Color color)
@@ -78,38 +82,38 @@ namespace rpg
             }
             if (e.Key == Key.Left)
             {
-                Hero.DrawHero("./assets/floor.gif");
-                Hero.DrawHero("./assets/hero-left.gif");
-                if (Hero.x > 0 && field[Hero.y * 10 + Hero.x - 1])
+                hero.DrawHero("./assets/floor.gif");
+                hero.DrawHero("./assets/hero-left.gif");
+                if (hero.x > 0 && field[hero.y * 10 + hero.x - 1])
                 {
-                    Hero.Move("./assets/hero-left.gif", -1, 0);
+                    hero.Move("./assets/hero-left.gif", -1, 0);
                 }
             }
             if (e.Key == Key.Right)
             {
-                Hero.DrawHero("./assets/floor.gif");
-                Hero.DrawHero("./assets/hero-right.gif");
-                if (Hero.x < 9 && field[Hero.y * 10 + Hero.x + 1])
+                hero.DrawHero("./assets/floor.gif");
+                hero.DrawHero("./assets/hero-right.gif");
+                if (hero.x < 9 && field[hero.y * 10 + hero.x + 1])
                 {
-                    Hero.Move("./assets/hero-right.gif", 1, 0);
+                    hero.Move("./assets/hero-right.gif", 1, 0);
                 }
             }
             if (e.Key == Key.Up)
             {
-                Hero.DrawHero("./assets/floor.gif");
-                Hero.DrawHero("./assets/hero-up.gif");
-                if (Hero.y > 0 && field[(Hero.y - 1) * 10 + Hero.x])
+                hero.DrawHero("./assets/floor.gif");
+                hero.DrawHero("./assets/hero-up.gif");
+                if (hero.y > 0 && field[(hero.y - 1) * 10 + hero.x])
                 {
-                    Hero.Move("./assets/hero-up.gif", 0, -1);
+                    hero.Move("./assets/hero-up.gif", 0, -1);
                 }
             }
             if (e.Key == Key.Down)
             {
-                Hero.DrawHero("./assets/floor.gif");
-                Hero.DrawHero("./assets/hero-down.gif");
-                if (Hero.y < 10 && field[(Hero.y + 1) * 10 + Hero.x])
+                hero.DrawHero("./assets/floor.gif");
+                hero.DrawHero("./assets/hero-down.gif");
+                if (hero.y < 10 && field[(hero.y + 1) * 10 + hero.x])
                 {
-                    Hero.Move("./assets/hero-down.gif", 0, 1);
+                    hero.Move("./assets/hero-down.gif", 0, 1);
                 }
             }
         }

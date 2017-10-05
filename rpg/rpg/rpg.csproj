@@ -56,9 +56,11 @@
     </ApplicationDefinition>
     <Compile Include="Character.cs" />
     <Compile Include="EmptyTile.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="NotEmptyTile.cs" />
+    <Compile Include="Stats.cs" />
     <Compile Include="Tile.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

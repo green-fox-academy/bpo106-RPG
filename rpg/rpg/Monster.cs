@@ -9,9 +9,7 @@ namespace rpg
 {
     public class Monster : Character
     {
-        private static int lvl = 1;
-
-        public static void SetPoints()
+        public void SetPoints()
         {
             d6 = random.Next(1, 7);
             hp = 2 * lvl * d6;
@@ -31,7 +29,7 @@ namespace rpg
             return str;
         }
 
-        public static void SetMonsterStart(FoxDraw foxDraw, List<bool> list, int xmax)
+        public void SetMonsterStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             Monster.foxDraw = foxDraw;
             isOnRoute = false;
@@ -44,7 +42,7 @@ namespace rpg
             }
         }
 
-        public static void DrawMonster(string filename)
+        public void DrawMonster(string filename)
         {
             foxDraw.AddImage(filename, x * 50, y * 50);
         }
