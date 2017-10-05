@@ -37,20 +37,20 @@ namespace rpg
             EmptyTile.SetField(10, 11);
             field = EmptyTile.GenerateRoute(foxDraw, 10);
 
-            boss.SetPoints();
+            boss.SetBossPoints();
             boss.SetMonsterStart(foxDraw, field, 10);
             opponentList.Add(Character.element);
             boss.DrawMonster("./assets/boss.gif");
-            stats.StatText(510, 100, Colors.Black, hero, "BOSS", canvas);
+            stats.StatText(510, 100, Colors.Black, boss, "BOSS", canvas);
 
             for (int i = 0; i < 3; i++)
             {
                 skeletons.Add(new Monster());
-                skeletons[i].SetPoints();
+                skeletons[i].SetMonsterPoints();
                 skeletons[i].SetMonsterStart(foxDraw, field, 10);
                 opponentList.Add(Character.element);
                 skeletons[i].DrawMonster("./assets/skeleton.gif");
-                stats.StatText(510, 100 * i + 200, Colors.Black, hero, "MONSTER " + (i + 1).ToString(), canvas);
+                stats.StatText(510, 100 * i + 200, Colors.Black, skeletons[i], "MONSTER " + (i + 1).ToString(), canvas);
             }
 
             hero.SetPoints();

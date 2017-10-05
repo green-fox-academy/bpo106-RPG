@@ -9,23 +9,20 @@ namespace rpg
 {
     public class Monster : Character
     {
-        public void SetPoints()
+        public void SetBossPoints()
+        {
+            d6 = random.Next(1, 7);
+            hp = 2 * (lvl + 1) * d6;
+            dp = (lvl / 2) * d6 + d6 / 2;
+            sp = lvl * (d6 + 1);
+        }
+
+        public void SetMonsterPoints()
         {
             d6 = random.Next(1, 7);
             hp = 2 * lvl * d6;
             dp = lvl / 2 * d6;
             sp = lvl * d6;
-        }
-
-        //public static string BossDataToString()
-        //{
-        //    string str = "BOSS\nHP: " + (hp + d6).ToString() + "\nDP: " + (dp + d6 / 2).ToString() + "\nSP: " + (sp + lvl).ToString();
-        //    return str;
-        //}
-
-        public string DataToString(string charName)
-        {
-            return charName + "\nHP: " + hp.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
         }
 
         public void SetMonsterStart(FoxDraw foxDraw, List<bool> list, int xmax)

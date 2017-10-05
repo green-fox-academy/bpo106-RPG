@@ -19,12 +19,6 @@ namespace rpg
             sp = d6 + 5;
         }
 
-        public string DataToString()
-        {
-            string str = "HERO\nHP: " + hp.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
-            return str;
-        }
-
         public void SetHeroStart(FoxDraw foxDraw, List<bool> list, int xmax)
         {
             isOnRoute = false;
