@@ -26,7 +26,7 @@ namespace rpg
         Hero hero = new Hero();
         Monster boss = new Monster();
         List<Monster> skeletons = new List<Monster>();
-
+        Stats stats = new Stats();
 
         public MainWindow()
         {
@@ -41,27 +41,22 @@ namespace rpg
             boss.SetMonsterStart(foxDraw, field, 10);
             opponentList.Add(Character.element);
             boss.DrawMonster("./assets/boss.gif");
-
-            //Stats.StatText(510, 100, Colors.Black, boss);
+            stats.StatText(510, 100, Colors.Black, hero, "BOSS", canvas);
 
             for (int i = 0; i < 3; i++)
             {
                 skeletons.Add(new Monster());
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
                 skeletons[i].SetPoints();
                 skeletons[i].SetMonsterStart(foxDraw, field, 10);
                 opponentList.Add(Character.element);
                 skeletons[i].DrawMonster("./assets/skeleton.gif");
+                stats.StatText(510, 100 * i + 200, Colors.Black, hero, "MONSTER " + (i + 1).ToString(), canvas);
             }
 
             hero.SetPoints();
             hero.SetHeroStart(foxDraw, field, 10);
             hero.DrawHero("./assets/hero-down.gif");
-
-            //Stats.StatText(510, 0, Colors.Black, hero);
+            stats.StatText(510, 0, Colors.Black, hero, "HERO", canvas);
         }
 
         private void Text(double x, double y, string text, Color color)

@@ -10,23 +10,21 @@ namespace rpg
 {
     public class Stats : GameLogic
     {
-        static Canvas canvas = new Canvas();
-
         static int hpc;
         static int hpmax;
         static int lvl;
         static int dp;
         static int sp;
 
-        public void StatText(double x, double y, Color color, Character character)
+        public void StatText(double x, double y, Color color, Character character, string charName, Canvas canvas)
         {
-            hpc = Character.hp;
-            hpmax = Character.hp;
-            lvl = Character.lvl;
-            dp = Character.dp;
-            sp = Character.sp;
+            hpc = character.hp;
+            hpmax = character.hp;
+            lvl = character.lvl;
+            dp = character.dp;
+            sp = character.sp;
 
-            string text = "LEVEL: " + lvl.ToString() + "\nHP: " + hpc.ToString() + "MAXIMUM HP: " + hpmax.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
+            string text = charName + "\nLEVEL: " + lvl.ToString() + "\nHP: " + hpc.ToString() + "\nMAX. HP: " + hpmax.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
             TextBlock textBlock = new TextBlock();
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(color);

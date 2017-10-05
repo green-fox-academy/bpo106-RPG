@@ -17,16 +17,15 @@ namespace rpg
             sp = lvl * d6;
         }
 
-        public static string BossDataToString()
-        {
-            string str = "BOSS\nHP: " + (hp + d6).ToString() + "\nDP: " + (dp + d6 / 2).ToString() + "\nSP: " + (sp + lvl).ToString();
-            return str;
-        }
+        //public static string BossDataToString()
+        //{
+        //    string str = "BOSS\nHP: " + (hp + d6).ToString() + "\nDP: " + (dp + d6 / 2).ToString() + "\nSP: " + (sp + lvl).ToString();
+        //    return str;
+        //}
 
-        public static string DataToString()
+        public string DataToString(string charName)
         {
-            string str = "MONSTER\nHP: " + hp.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
-            return str;
+            return charName + "\nHP: " + hp.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
         }
 
         public void SetMonsterStart(FoxDraw foxDraw, List<bool> list, int xmax)

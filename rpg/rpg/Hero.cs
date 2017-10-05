@@ -19,7 +19,7 @@ namespace rpg
             sp = d6 + 5;
         }
 
-        public static string DataToString()
+        public string DataToString()
         {
             string str = "HERO\nHP: " + hp.ToString() + "\nDP: " + dp.ToString() + "\nSP: " + sp.ToString();
             return str;
