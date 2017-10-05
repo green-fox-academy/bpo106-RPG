@@ -28,6 +28,7 @@ namespace rpg
             TextBlock textBlock = new TextBlock();
             textBlock.Text = text;
             textBlock.Foreground = new SolidColorBrush(color);
+            textBlock.Background = new SolidColorBrush(Colors.White);
             Canvas.SetLeft(textBlock, x);
             Canvas.SetTop(textBlock, y);
             canvas.Children.Add(textBlock);

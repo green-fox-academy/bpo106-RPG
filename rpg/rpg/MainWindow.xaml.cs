@@ -22,7 +22,7 @@ namespace rpg
     public partial class MainWindow : Window
     {
         List<bool> field;
-        List<int> opponentList = new List<int>();
+        List<Monster> opponentList = new List<Monster>();
         Hero hero = new Hero();
         Monster boss = new Monster();
         List<Monster> skeletons = new List<Monster>();
@@ -39,7 +39,7 @@ namespace rpg
 
             boss.SetBossPoints();
             boss.SetMonsterStart(foxDraw, field, 10);
-            opponentList.Add(Character.element);
+            opponentList.Add(boss);
             boss.DrawMonster("./assets/boss.gif");
             stats.StatText(510, 100, Colors.Black, boss, "BOSS", canvas);
 
@@ -48,7 +48,7 @@ namespace rpg
                 skeletons.Add(new Monster());
                 skeletons[i].SetMonsterPoints();
                 skeletons[i].SetMonsterStart(foxDraw, field, 10);
-                opponentList.Add(Character.element);
+                opponentList.Add(skeletons[i]);
                 skeletons[i].DrawMonster("./assets/skeleton.gif");
                 stats.StatText(510, 100 * i + 200, Colors.Black, skeletons[i], "MONSTER " + (i + 1).ToString(), canvas);
             }
@@ -71,10 +71,35 @@ namespace rpg
 
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            for (int i = 0; i < opponentList.Count; i++)
             {
-                Console.WriteLine("Enter");
+                if (hero.x == opponentList[i].x && hero.y == opponentList[i].y)
+                {
+                    while (hero.hp > 0 && opponentList[i].hp > 0)
+                    {
+                        if (Keyboard.IsKeyDown(Key.Space))
+                        {
+                            Fight.Strike(hero, opponentList[i]);
+                            if (opponentList[i].hp > 0)
+                            {
+                                Fight.Strike(opponentList[i], hero);
+                            }
+                        }
+                    }
+                    opponentList[i].x = -1;
+                    opponentList[i].y = -1;
+                    if (hero.hp <= 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        hero.lvl++;
+                        hero.SetPoints();
+                    }
+                }
             }
+
             if (e.Key == Key.Left)
             {
                 hero.DrawHero("./assets/floor.gif");
