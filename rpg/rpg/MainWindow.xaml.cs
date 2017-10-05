@@ -41,7 +41,6 @@ namespace rpg
             boss.SetMonsterStart(foxDraw, field, 10);
             opponentList.Add(boss);
             boss.DrawMonster("./assets/boss.gif");
-            stats.StatText(510, 100, Colors.Black, boss, "BOSS", canvas);
 
             for (int i = 0; i < 3; i++)
             {
@@ -50,7 +49,6 @@ namespace rpg
                 skeletons[i].SetMonsterStart(foxDraw, field, 10);
                 opponentList.Add(skeletons[i]);
                 skeletons[i].DrawMonster("./assets/skeleton.gif");
-                stats.StatText(510, 100 * i + 200, Colors.Black, skeletons[i], "MONSTER " + (i + 1).ToString(), canvas);
             }
 
             hero.SetPoints();
@@ -75,6 +73,14 @@ namespace rpg
             {
                 if (hero.x == opponentList[i].x && hero.y == opponentList[i].y)
                 {
+                    if (i == 0)
+                    {
+                        stats.StatText(510, 100, Colors.Black, boss, "BOSS", canvas);
+                    }
+                    else
+                    {
+                        stats.StatText(510, 100, Colors.Black, skeletons[i - 1], "SKELETON", canvas);
+                    }
                     while (hero.hp > 0 && opponentList[i].hp > 0)
                     {
                         if (Keyboard.IsKeyDown(Key.Space))
@@ -96,6 +102,7 @@ namespace rpg
                     {
                         hero.lvl++;
                         hero.SetPoints();
+                        stats.StatText(510, 0, Colors.Black, hero, "HERO", canvas);
                     }
                 }
             }
